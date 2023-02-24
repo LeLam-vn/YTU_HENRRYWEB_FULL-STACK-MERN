@@ -1,0 +1,19 @@
+GET http://localhost:5005/api/auth
+
+###
+POST http://localhost:5005/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "cubin3",
+  "password": "cubin123"
+}
+
+###
+POST http://localhost:5005/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "cubin2",
+  "password": "cubin123"
+}
