@@ -5,7 +5,7 @@ POST http://localhost:5005/api/auth/register
 Content-Type: application/json
 
 {
-  "username": "cubin3",
+  "username": "cubin6",
   "password": "cubin123"
 }
 
@@ -17,3 +17,21 @@ Content-Type: application/json
   "username": "cubin2",
   "password": "cubin123"
 }
+
+
+###
+POST http://localhost:5005/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZiOTU0MTdlNzk3N2FlODAzYTAyNWQiLCJpYXQiOjE2Nzc0MzIxMjl9.fB1iwg80M6IkJ4-JltSmozegahwssx6BI3BoSf0GCYU
+
+{
+  "title": "cubin23233",
+  "description": "cubin123",
+  "url": "google.com",
+  "status": "LEARNING"
+}
+
+###
+GET http://localhost:5005/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2M2Y4ZDI3NjFkZjdhODA0NmJkOGIxNDMiLCJpYXQiOjE2Nzc0MzI4NjB9.2MlJiFKJKdfLeFC-jspba9FkLGMbHqIMCv2kuChzeGk

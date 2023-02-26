@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const authRouter = require('./routes/auth')
+const postRouter = require('./routes/post')
 
 
 mongoose.set('strictQuery', false);
@@ -22,6 +23,7 @@ const app = express()
 app.use(express.json())
 // app.get('/api/auth',(req,res)=>{res.send('Hello Word')})
 app.use('/api/auth',authRouter)
+app.use('/api/posts', postRouter)
 
 const PORT = 5005
 app.listen(PORT, ()=>console.log(`Server started on port: ${PORT}`))
