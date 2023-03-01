@@ -27,10 +27,12 @@ router.get('/', verifyToken, async (req,res)=>{
 //@access Private
 
 router.post('/', verifyToken, async (req,res)=>{
-    const {title, description, url, status} = req.body;
+    const {title, description, url, status} = req.body
     //Simple validation
     if(!title)
-        return res.status(400).json({success:false, message:'Title is required!!!'})
+        return res
+            .status(400)
+            .json({success:false, message:'Title is required!!!'})
     try{
         const newPost = new Post({
             title:title,
@@ -39,6 +41,9 @@ router.post('/', verifyToken, async (req,res)=>{
             status:status||'TO LEARN',
             user:req.userId
         });
+        console.log('req.userId: ', req.userId)
+        console.log('newPost: ', newPost)
+        console.log('newPost.user: ', newPost.user)
         await newPost.save();
         res.json({success: true, message:'Happy learning!!!', post: newPost })
     }

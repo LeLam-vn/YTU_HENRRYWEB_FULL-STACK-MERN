@@ -5,3 +5,9 @@ https://www.youtube.com/watch?v=S11E1d1cTes
 
 code: https://github.com/lpredrum136/mern-tutorial-learnit
 https://github.com/lpredrum136/mern-tutorial-learnit.git
+
+register
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZmOTBlODg0M2RkMzRiMWE1NmY1MzYiLCJpYXQiOjE2Nzc2OTMxNjB9.Cts76h2SFWCXLxy-TBW2Lg-Ny6EzzonNvWVsn0sU0Lg
+
+login
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZmOTBlODg0M2RkMzRiMWE1NmY1MzYiLCJpYXQiOjE2Nzc2OTMyNzJ9.nmi-P6dB3MbiB7V6GNLzF034c3wb9Ix2QesRL0imyrA

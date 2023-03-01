@@ -4,7 +4,7 @@ const Schema = mongoose.Schema
 const PostSchema = new Schema({
     title:{
         type: String,
-        require:true,
+        require: true,
     },
     description:{
         type: String
@@ -18,7 +18,7 @@ const PostSchema = new Schema({
     },
     user:{
         type: Schema.Types.ObjectId,
-        ref:'users' // connect schema user
+        ref:'users' 
     }
 })
 

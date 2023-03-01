@@ -32,6 +32,8 @@ router.post('/register', async (req,res)=>{
 
         // Return Token
         const accessToken = jwt.sign({userId: newuser._id}, process.env.ACCESS_TOKEN_SECRET)
+
+
         return res.json({success:true, massage:'User creates successfully', accessToken})
     }
 
@@ -62,7 +64,8 @@ router.post('/login', async (req,res)=>{
         if(!passwordValid)
             return res.status(400).json ({success: false, message:'Incorrect password!!!'})
         //all good
-        const accessToken = jwt.sign({userID:user._id}, process.env.ACCESS_TOKEN_SECRET)
+        // Return token
+        const accessToken = jwt.sign({userId:user._id}, process.env.ACCESS_TOKEN_SECRET)
         res.json({
             success: true,
             massage: 'User Login Successfully',

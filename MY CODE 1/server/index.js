@@ -8,7 +8,15 @@ const postRouter = require('./routes/post')
 mongoose.set('strictQuery', false);
 const connectDB = async () =>{
     try {
-        await mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@mern-clearnit.1u9nx77.mongodb.net/mern-learnit?retryWrites=true&w=majority`,{ useNewUrlParser: true, useUnifiedTopology: true  })
+        await mongoose.connect(`mongodb+srv://${process.env.DB_USERNAME}:${process.env.DB_PASSWORD}@mern-clearnit.1u9nx77.mongodb.net/mern-learnit?retryWrites=true&w=majority`,
+            {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+            // useCreateIndex: true,
+            // useNewUrlParser: true,
+            // useUnifiedTopology: true,
+            // useFindAndModify: false
+        })
         console.log('MongoDB connected')
     }
     catch (error) {
