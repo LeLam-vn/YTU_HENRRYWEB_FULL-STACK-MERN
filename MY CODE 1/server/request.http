@@ -14,7 +14,7 @@ POST http://localhost:5005/api/auth/login
 Content-Type: application/json
 
 {
-  "username": "cubin3",
+  "username": "cubin1",
   "password": "cubin123"
 }
 
@@ -25,14 +25,30 @@ Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZmOTBlODg0M2RkMzRiMWE1NmY1MzYiLCJpYXQiOjE2Nzc2OTMyNzJ9.nmi-P6dB3MbiB7V6GNLzF034c3wb9Ix2QesRL0imyrA
 
 {
-  "title": "Cubin3",
-  "description": "cubasddqwin1",
-  "url": "googl/ewe.e.com",
+  "title": "CubiDGFDFDn3",
+  "description": "cubasdGDFWEFSFdqwin1",
+  "url": "googFSFl/eweEQWE.e.com",
   "status": "LEARNING"
 }
 
 ###
 GET http://localhost:5005/api/posts
-Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2M2ZmOGI0ZTcxYTMzODQwYTFhZWM3MmYiLCJpYXQiOjE2Nzc2OTE3NjV9.4PqI8iNaAkDS7Sa762X3BrGBEFYbN0qsq11k5xIhZJM
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZmOTBlODg0M2RkMzRiMWE1NmY1MzYiLCJpYXQiOjE2Nzc2OTMyNzJ9.nmi-P6dB3MbiB7V6GNLzF034c3wb9Ix2QesRL0imyrA
 
+
+###
+PUT http://localhost:5005/api/posts/64005fc8589d208e99bc8c34
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZmOTBlODg0M2RkMzRiMWE1NmY1MzYiLCJpYXQiOjE2Nzc2OTMyNzJ9.nmi-P6dB3MbiB7V6GNLzF034c3wb9Ix2QesRL0imyrA
+
+{
+  "title": "CubiOIIIweere",
+  "description": "BUUU",
+  "url": "GHD",
+  "status": "LEARNING"
+}
+
+###
+DELETE http://localhost:5005/api/posts/64005fc8589d208e99bc8c34
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZmOTBlODg0M2RkMzRiMWE1NmY1MzYiLCJpYXQiOjE2Nzc2OTMyNzJ9.nmi-P6dB3MbiB7V6GNLzF034c3wb9Ix2QesRL0imyrA
