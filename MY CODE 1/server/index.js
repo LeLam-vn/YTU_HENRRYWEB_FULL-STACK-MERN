@@ -3,7 +3,7 @@ const express = require('express')
 const mongoose = require('mongoose')
 const authRouter = require('./routes/auth')
 const postRouter = require('./routes/post')
-
+const cors = require('cors')
 
 mongoose.set('strictQuery', false);
 const connectDB = async () =>{
@@ -29,6 +29,7 @@ connectDB()
 
 const app = express()
 app.use(express.json())
+app.use(cors())
 // app.get('/api/auth',(req,res)=>{res.send('Hello Word')})
 app.use('/api/auth',authRouter)
 app.use('/api/posts', postRouter)
