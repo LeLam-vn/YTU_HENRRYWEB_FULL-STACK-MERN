@@ -1,12 +1,15 @@
 import React, {useContext, useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import {Button} from "react-bootstrap";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import {AuthContext} from "../../contexts/AuthContext";
 
 const LoginForm = () => {
     //Context
     const {loginUser} = useContext(AuthContext);
+
+    //Router
+    const history = useHistory()
 
     // Local state
     const [loginForm, setLoginForm] = useState({
@@ -33,6 +36,9 @@ const LoginForm = () => {
         try {
             const loginData = await loginUser(loginForm)
             console.log(loginData)
+            if(loginData.success){
+                history.push('/dashboard')
+            }
         }
         catch (error) {
             console.log(error)
