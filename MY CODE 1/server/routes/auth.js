@@ -4,7 +4,29 @@ const argon2 = require('argon2')
 const jwt = require('jsonwebtoken')
 
 const User = require('../models/User')
-router.get('/', (req,res)=>res.send('USER ROUTE'))
+const verifyToken = require("../middleware/auth");
+// router.get('/', (req,res)=>res.send('USER ROUTE'))
+
+
+
+//@route GET api/auth
+//@desc Check if user is logged in
+//@access Public
+
+router.get('/', verifyToken, async (req,res)=>{
+    try{
+        const user = await User.findById(req.userId).select('-password')
+        if(!user) return res.status(400).json({
+            success: false,
+            message:'User not found'
+        })
+        console.log('Login successfully!!!')
+    }
+    catch (error) {
+        console.log(error)
+        res.status(500).json({success: false, massage:'Internal server error!!!'})
+    }
+})
 
 
 //@route POST /api/auth/register

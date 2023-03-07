@@ -1,10 +1,11 @@
-import {createContext, useReducer} from "react";
+import {createContext, useEffect, useReducer} from "react";
 import axios from "axios";
 import {authReducer} from "../reducers/authReducer";
 import {apiUrl, LOCAL_STORAGE_TOKEN_NAME} from "./constants";
+import setAuthToken from "../utils/setAuthToken";
 
 //create Context
-export const AuthContext = createContext()
+export const AuthContext = createContext(undefined)
 
 const AuthContextProvider = ({children}) =>{
 
@@ -13,6 +14,38 @@ const AuthContextProvider = ({children}) =>{
         isAuthenticated: false,
         user: null
     })
+// Authenticate User
+const loadUser = async () =>{
+        if(localStorage[LOCAL_STORAGE_TOKEN_NAME]){
+            setAuthToken(localStorage[LOCAL_STORAGE_TOKEN_NAME])
+        }
+        try{
+            const response = await axios.get(`${apiUrl}/auth`)
+            if (response.data.success){
+                console.log('toi day')
+                dispatch({
+                    type: 'SET_AUTH',
+                    payload:{
+                        isAuthenticated: true,
+                        user: response.data.user
+                    }
+                })
+            }
+        }
+        catch (error) {
+            localStorage.removeItem(LOCAL_STORAGE_TOKEN_NAME)
+            setAuthToken(null)
+            dispatch({
+                type:'SET_AUTH',
+                payload:{
+                    isAuthenticated: false,
+                    user: null
+                }
+            })
+        }
+}
+
+useEffect(() => loadUser(), [])
 
     //Login
     const loginUser = async userForm =>{
@@ -36,7 +69,7 @@ const AuthContextProvider = ({children}) =>{
 
     //Context data
 
-    const authContextData = {loginUser}
+    const authContextData = {loginUser, authState}
 
     //Return provider
     return (
