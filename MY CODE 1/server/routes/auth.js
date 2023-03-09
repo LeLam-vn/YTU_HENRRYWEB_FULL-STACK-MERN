@@ -20,6 +20,7 @@ router.get('/', verifyToken, async (req,res)=>{
             success: false,
             message:'User not found'
         })
+        res.json({ success: true, user })
         console.log('Login successfully!!!')
     }
     catch (error) {
