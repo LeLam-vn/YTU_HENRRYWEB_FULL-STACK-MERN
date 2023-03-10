@@ -35,7 +35,7 @@ const LoginForm = () => {
         event.preventDefault()
         try {
             const loginData = await loginUser(loginForm)
-            console.log(loginData)
+            console.log('loginData-Login Form: ',loginData)
             if(loginData.success){
                 history.push('/dashboard')
             }
@@ -85,6 +85,7 @@ const LoginForm = () => {
                         variant='info'
                         size='sm'
                         className='ml-2'
+                        onSubmit={login}
                     >
                         Register
                     </Button>

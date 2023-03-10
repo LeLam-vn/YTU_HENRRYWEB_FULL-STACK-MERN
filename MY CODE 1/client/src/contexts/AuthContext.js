@@ -26,12 +26,13 @@ const AuthContextProvider = ({children}) =>{
                 if (response.data.success){
                     console.log('toi day')
                     dispatch({
-                        type: 'SET_AUTH',
+                        type:'SET_AUTH',
                         payload:{
                             isAuthenticated: true,
                             user: response.data.user
                         }
                     })
+                    console.log("response: ", response)
                 }
             }
             catch (error) {
@@ -44,12 +45,10 @@ const AuthContextProvider = ({children}) =>{
                         user: null
                     }
                 })
+                console.log("response 2: ")
             }
     }
 
-
-
-    // Authenticate User
 
     // useEffect(() => loadUser(), [])
     useEffect(() => {
@@ -67,6 +66,7 @@ const AuthContextProvider = ({children}) =>{
                     LOCAL_STORAGE_TOKEN_NAME,
                     response.data.accessToken
                 )
+            await loadUser()
             console.log('response.data: ', response.data)
             return response.data
         }
