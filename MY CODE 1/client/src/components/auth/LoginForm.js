@@ -3,6 +3,7 @@ import Form from 'react-bootstrap/Form';
 import {Button} from "react-bootstrap";
 import {Link, useHistory} from "react-router-dom";
 import {AuthContext} from "../../contexts/AuthContext";
+import AlertMessage from "../layout/AlertMessage";
 
 const LoginForm = () => {
     //Context
@@ -16,6 +17,8 @@ const LoginForm = () => {
         username:'',
         password:''
     });
+
+    const [alert, setAlert] = useState(null);
 
     const {username, password} = loginForm
 
@@ -33,11 +36,16 @@ const LoginForm = () => {
     const login = async event => {
         console.log('Click Login')
         event.preventDefault()
+
+
         try {
             const loginData = await loginUser(loginForm)
             console.log('loginData-Login Form: ',loginData)
             if(loginData.success){
                 history.push('/dashboard')
+            } else {
+                setAlert({type:'danger', message:loginData.message})
+                setTimeout(()=> setAlert(null),3000)
             }
         }
         catch (error) {
@@ -49,6 +57,7 @@ const LoginForm = () => {
     return(
         <>
             <Form className='my-4' onSubmit={login}>
+                <AlertMessage info = {alert}/>
                 <Form.Group className='my-2'>
                     <Form.Control
                         type='text'
