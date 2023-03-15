@@ -47,7 +47,7 @@ router.post('/register', async (req,res)=>{
         if(user)
             return res
                 .status(400)
-                .json({success: false, massage:'Username already taken!!!'})
+                .json({success: false, massage:'Username already taken'})
         //AllGood
         const hashedPassword = await argon2.hash(password)
         const newuser = new User({username:username, password: hashedPassword})

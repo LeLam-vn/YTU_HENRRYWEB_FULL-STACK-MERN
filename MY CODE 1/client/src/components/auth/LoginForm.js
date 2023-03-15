@@ -1,16 +1,19 @@
 import React, {useContext, useState} from 'react';
 import Form from 'react-bootstrap/Form';
 import {Button} from "react-bootstrap";
-import {Link, useHistory} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {AuthContext} from "../../contexts/AuthContext";
 import AlertMessage from "../layout/AlertMessage";
 
 const LoginForm = () => {
     //Context
-    const {loginUser} = useContext(AuthContext);
+    const {
+        loginUser,
+        // authState:{isAuthenticated}
+    } = useContext(AuthContext);
 
     //Router
-    const history = useHistory()
+    // const history = useHistory()
 
     // Local state
     const [loginForm, setLoginForm] = useState({
@@ -41,9 +44,9 @@ const LoginForm = () => {
         try {
             const loginData = await loginUser(loginForm)
             console.log('loginData-Login Form: ',loginData)
-            if(loginData.success){
-                history.push('/dashboard')
-            } else {
+            if(!loginData.success){
+            //     history.push('/dashboard')
+            // } else {
                 setAlert({type:'danger', message:loginData.message})
                 setTimeout(()=> setAlert(null),3000)
             }
