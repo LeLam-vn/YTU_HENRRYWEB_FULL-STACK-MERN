@@ -5,7 +5,7 @@ POST http://localhost:5005/api/auth/register
 Content-Type: application/json
 
 {
-  "username": "cubin2",
+  "username": "cubin1",
   "password": "cubin123"
 }
 
@@ -14,7 +14,7 @@ POST http://localhost:5005/api/auth/login
 Content-Type: application/json
 
 {
-  "username": "cubin2",
+  "username": "cubin1",
   "password": "cubin123"
 }
 
@@ -22,13 +22,13 @@ Content-Type: application/json
 ###
 POST http://localhost:5005/api/posts
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZmOTBlODg0M2RkMzRiMWE1NmY1MzYiLCJpYXQiOjE2Nzc2OTMyNzJ9.nmi-P6dB3MbiB7V6GNLzF034c3wb9Ix2QesRL0imyrA
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZmOTBlODg0M2RkMzRiMWE1NmY1MzYiLCJpYXQiOjE2NzkwMzcyODN9.5dxNtAzvWDyY-hWwi7FoXFQrFrOCAAj-Hah-ZPBTyn8
 
 {
   "title": "CubiDGFDFDn3",
   "description": "cubasdGDFWEFSFdqwin1",
   "url": "googFSFl/eweEQWE.e.com",
-  "status": "LEARNING"
+  "status": "LEARNED"
 }
 
 ###

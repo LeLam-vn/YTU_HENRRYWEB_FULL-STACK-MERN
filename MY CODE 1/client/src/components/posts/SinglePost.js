@@ -17,13 +17,14 @@ const SinglePost = ({post:{_id,status,title, description, url}}) => (
                     <Col>
                         <p className='post-title'>{title}</p>
                         <Badge
-                            pill variant ={
+                            pill
+                            bg ={
                             status==='LEARNED'
                                 ?'success'
                                 :status==='LEARNING'
                                     ?'warning'
                                     :'danger'
-                        }
+                            }
                         >
                             {status}
                         </Badge>
@@ -37,7 +38,6 @@ const SinglePost = ({post:{_id,status,title, description, url}}) => (
                 {description}
             </Card.Text>
         </Card.Body>
-
     </Card>
 )
 export default SinglePost
