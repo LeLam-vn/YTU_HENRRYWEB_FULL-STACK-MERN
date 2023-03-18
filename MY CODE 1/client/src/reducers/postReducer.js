@@ -1,4 +1,4 @@
-import {POST_LOADED_FAIL,POST_LOADED_SUCCESS, ADD_POST, DELETE_POST} from "../contexts/constants";
+import {POST_LOADED_FAIL, POST_LOADED_SUCCESS, ADD_POST, DELETE_POST, UPDATE_POST} from "../contexts/constants";
 
 export const postReducer = (state, action)=>{
     const {type, payload} = action;
@@ -24,6 +24,16 @@ export const postReducer = (state, action)=>{
             return {
                 ...state,
                 posts: state.posts.filter(post=>post._id!== payload)
+            }
+        case UPDATE_POST:
+            const newPosts = state.posts.map(post=>{
+                if(post._id===payload._id)
+                    return payload
+                return post
+            })
+            return {
+                ...state,
+                posts:newPosts
             }
 
         default:

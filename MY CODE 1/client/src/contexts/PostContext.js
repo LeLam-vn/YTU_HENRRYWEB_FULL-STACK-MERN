@@ -1,6 +1,6 @@
 import {createContext, useReducer, useState} from "react";
 import {postReducer} from "../reducers/postReducer";
-import {apiUrl, POST_LOADED_FAIL, POST_LOADED_SUCCESS, ADD_POST, DELETE_POST} from "./constants";
+import {apiUrl, POST_LOADED_FAIL, POST_LOADED_SUCCESS, ADD_POST, DELETE_POST, UPDATE_POST} from "./constants";
 import axios from "axios";
 
 export const PostContext = createContext()
@@ -72,6 +72,24 @@ const PostContextProvider = ({children}) =>{
         }
         catch (error){
             console.log(error)
+        }
+    }
+
+    //Update post
+    const updatePost =async updatedPost =>{
+        try{
+            const response = await axios.put(`${apiUrl}/posts/${updatedPost._id}`,updatedPost)
+            if (response.data.success)
+                dispatch({
+                    type: UPDATE_POST,
+                    payload:response.data.post
+                })
+            return response.data
+        }
+        catch (error) {
+            return error.response.data
+                ?error.response.data
+                :{success:false, message:'Server error'}
         }
     }
 
