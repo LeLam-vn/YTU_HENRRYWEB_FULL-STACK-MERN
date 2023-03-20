@@ -37,7 +37,7 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZmO
 
 
 ###
-PUT http://localhost:5005/api/posts/64005fc8589d208e99bc8c34
+PUT http://localhost:5005/api/posts/6416334682a6fe7fce148c68
 Content-Type: application/json
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2M2ZmOTBlODg0M2RkMzRiMWE1NmY1MzYiLCJpYXQiOjE2Nzc2OTMyNzJ9.nmi-P6dB3MbiB7V6GNLzF034c3wb9Ix2QesRL0imyrA
 

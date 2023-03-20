@@ -1,6 +1,6 @@
 import {createContext, useReducer, useState} from "react";
 import {postReducer} from "../reducers/postReducer";
-import {apiUrl, POST_LOADED_FAIL, POST_LOADED_SUCCESS, ADD_POST, DELETE_POST, UPDATE_POST} from "./constants";
+import {apiUrl, POST_LOADED_FAIL, POST_LOADED_SUCCESS, ADD_POST, DELETE_POST, UPDATE_POST, FIND_POST} from "./constants";
 import axios from "axios";
 
 export const PostContext = createContext()
@@ -8,12 +8,14 @@ export const PostContext = createContext()
 const PostContextProvider = ({children}) =>{
     //State
     const [postState, dispatch] = useReducer(postReducer,{
+        post: null,
         posts:[],
         postsLoading: true
     });
     // Setup Modal
 
     const [showAddPostModal, setShowAddPostModal] = useState(false);
+    const [showUpdatePostModal, setShowUpdatePostModal] = useState(false);
 
     const [showToast, setShowToast] = useState({
         show: false,
@@ -75,27 +77,58 @@ const PostContextProvider = ({children}) =>{
         }
     }
 
+    //Find post when user updating post
+
+    const findPost = postId =>{
+        const post = postState.posts.find(post => post._id === postId)
+        dispatch({
+            type: FIND_POST,
+            payload: post
+        })
+    }
+
+
     //Update post
-    const updatePost =async updatedPost =>{
+    const updatePost = async updatedPost => {
         try{
-            const response = await axios.put(`${apiUrl}/posts/${updatedPost._id}`,updatedPost)
-            if (response.data.success)
+            const response = await axios.put(
+                `${apiUrl}/posts/${updatedPost._id}`,
+                updatedPost
+                )
+            console.log('response: ',response)
+            console.log('response.data: ',response.data)
+            console.log('response.data.updatedPost: ',response.data.updatedPost)
+            if (response.data.success){
                 dispatch({
                     type: UPDATE_POST,
-                    payload:response.data.post
-                })
+                    payload: response.data.updatedPost})
+                // console.log('response.data.post:', response.data.post)
             return response.data
-        }
-        catch (error) {
+            }
+        } catch (error) {
             return error.response.data
-                ?error.response.data
-                :{success:false, message:'Server error'}
+                ? error.response.data
+                : {success: false, message: 'Server error'}
         }
     }
 
     //Context data
 
-    const postContextData = {postState, getPosts, showAddPostModal,setShowAddPostModal, addPost, showToast, setShowToast, deletePost}
+    const postContextData = {
+        postState,
+        getPosts,
+        showAddPostModal,
+        setShowAddPostModal,
+        showUpdatePostModal,
+        setShowUpdatePostModal,
+        addPost,
+        showToast,
+        setShowToast,
+        deletePost,
+        updatePost,
+        findPost,
+
+    }
 
     return(
         <PostContext.Provider value={postContextData}>

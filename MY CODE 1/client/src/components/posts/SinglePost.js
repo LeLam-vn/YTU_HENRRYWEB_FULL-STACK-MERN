@@ -3,7 +3,7 @@ import {Badge, Card, Col, Row} from "react-bootstrap";
 import ActionButtons from "./ActionButtons";
 
 
-const SinglePost = ({post:{_id,status,title, description, url}}) => (
+const SinglePost = ({post:{_id, status, title, description, url}}) => (
     <Card
         className='shadow'
         border={

@@ -5,13 +5,23 @@ import deleteIcon from '../../assets/trash.svg'
 import Button from "react-bootstrap/Button";
 import {PostContext} from "../../contexts/PostContext";
 const ActionButtons = ({url,_id}) => {
-    const {deletePost} = useContext(PostContext)
+    const {
+    deletePost,
+    findPost,
+    setShowUpdatePostModal
+    } = useContext(PostContext)
+
+    const choosePost = postId=>{
+        findPost(postId)
+        console.log(_id)
+        setShowUpdatePostModal(true)
+    }
     return (
         <>
           <Button className='post-button' href={url} target ='_blank'>
               <img src={playIcon} alt="play" width='32' height='32'/>
           </Button>
-            <Button className='post-button' href={url} target ='_blank'>
+            <Button className='post-button' onClick={choosePost.bind(this, _id)}>
               <img src={editIcon} alt="edit" width='24' height='24'/>
         </Button>
         <Button className='post-button' onClick={deletePost.bind(this,_id)}>

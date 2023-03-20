@@ -7,15 +7,15 @@ import Button from "react-bootstrap/Button";
 import SinglePost from "../components/posts/SinglePost";
 import AddPostModal from "../components/posts/AddPostModal";
 import addIcon from '../assets/plus-circle-fill.svg'
+import UpdatePostModal from "../components/posts/UpdatePostModal";
 
 const Dashboard = () => {
     //Context
     const {authState:{user:{username}}} = useContext(AuthContext)
     const {
-        postState:{posts, postsLoading},
+        postState:{posts, postsLoading, post},
         getPosts,
         setShowAddPostModal,
-        showAddPostModal,
         showToast:{show, message, type},
         setShowToast
     } = useContext(PostContext)
@@ -82,6 +82,7 @@ const Dashboard = () => {
             {/*<h1>Dashboard</h1>*/}
             {body}
             <AddPostModal/>
+            {post !==null && <UpdatePostModal/>}
 
             {/*After post is added, show toast*/}
             <Toast
@@ -97,7 +98,7 @@ const Dashboard = () => {
                 autohide
             >
                 <Toast.Body>
-                    <strong> Add new post successfully</strong>
+                    <strong>{message}</strong>
                 </Toast.Body>
             </Toast>
         </>
